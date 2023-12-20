@@ -4,52 +4,44 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 3f;
-    float minBoundsX = -3f;
-    float maxBoundsX = 3f;
-    float maxBoundsY = 130f;
+
+    [SerializeField] float boundsX = 3f;
+    [SerializeField] float boundsY = 130f;
+
+
+    Player player;
     Transform playerPosition;
+    float moveSpeed;
+
+
+
     void Start()
     {
-        playerPosition = FindAnyObjectByType<Player>().GetComponent<Transform>();
+        player = FindAnyObjectByType<Player>();
+        playerPosition = player.GetComponent<Transform>();
+        moveSpeed = player.GetPlayrMoveSpeed();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        MoveCamera();
+    }
+
+    private void MoveCamera()
+    {
+        if ((transform.position.x < playerPosition.position.x) && (transform.position.x <= boundsX))
         {
-            if (Input.GetKey(KeyCode.RightArrow) && (transform.position.x <= maxBoundsX))
-            {
-                transform.position = transform.position + new Vector3(1f * moveSpeed * Time.deltaTime, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow) && (transform.position.x >= minBoundsX))
-            {
-                transform.position = transform.position + new Vector3(-1f * moveSpeed * Time.deltaTime, 0, 0);
-            }
+            transform.position = transform.position + new Vector3(1f * moveSpeed / 4 * Time.deltaTime, 0, 0);
+        }
+        if ((transform.position.x > playerPosition.position.x) && (transform.position.x >= -boundsX))
+        {
+            transform.position = transform.position + new Vector3(-1f * moveSpeed / 4 * Time.deltaTime, 0, 0);
         }
 
-
-
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+        if ((transform.position.y < playerPosition.position.y) && (transform.position.y <= boundsY))
         {
-            if (Input.GetKey(KeyCode.UpArrow) &&(transform.position.y <= maxBoundsY))
-            {
-                if(transform.position.y < playerPosition.position.y)
-                {
-                    transform.position = transform.position + new Vector3(0, 1f * 10f * Time.deltaTime, 0);
-                }
-                else
-                {
-                    transform.position = transform.position + new Vector3(0, 1f * 7f * Time.deltaTime, 0);
-                }
-
-            }
-            //if (Input.GetKey(KeyCode.DownArrow) && (transform.position.y >= 0))
-            //{
-            //    transform.position = transform.position + new Vector3(0, -1f * 10f * Time.deltaTime, 0);
-            //}
+            transform.position = transform.position + new Vector3(0, moveSpeed * Time.deltaTime, 0);
         }
-
     }
 }
