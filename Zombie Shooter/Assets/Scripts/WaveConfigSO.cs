@@ -13,9 +13,6 @@ public class WaveConfigSO : ScriptableObject
     //список ворогів префабів які будемо спамити на шляху
     [SerializeField]List<GameObject> enemyPrefabs;
 
-    //кількість ворогів
-    //int enemyCount;
-
     //метод який повертає швидкість руху
     public float GetMoveSpeed()
     {
