@@ -10,6 +10,12 @@ public class WaveConfigSO : ScriptableObject
     //швидкість руху
     [SerializeField] float moveSpeed = 5f;
 
+    //список ворогів префабів які будемо спамити на шляху
+    [SerializeField]List<GameObject> enemyPrefabs;
+
+    //кількість ворогів
+    //int enemyCount;
+
     //метод який повертає швидкість руху
     public float GetMoveSpeed()
     {
@@ -32,5 +38,18 @@ public class WaveConfigSO : ScriptableObject
             wayPoints.Add(child);
         }
         return wayPoints;
+    }
+
+    //метод який повертає кількість ворогів зі списку
+    public int GetEnemyCount()
+    {
+        return enemyPrefabs.Count;
+    }
+
+
+    //повертає ворога в залежності від індекса в списку ворогів
+    public GameObject GetEnemyPrefabs(int index)
+    {
+        return enemyPrefabs[index];
     }
 }
