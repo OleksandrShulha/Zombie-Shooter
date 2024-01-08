@@ -1948,7 +1948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844250181}
   - component: {fileID: 844250182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Idle_gun_000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2180,7 +2180,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1367570572}
   - component: {fileID: 1367570573}
-  m_Layer: 0
+  - component: {fileID: 1367570575}
+  - component: {fileID: 1367570574}
+  - component: {fileID: 1367570578}
+  - component: {fileID: 1367570577}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2217,6 +2221,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 15
   paddingOnScreen: 2
+--- !u!114 &1367570574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367570571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1665ee2fedca1425fa4fe95f9299dc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefabs: {fileID: 9099321837147021101, guid: 280f7021947424cb4b410ce09dbfacbd, type: 3}
+  bulletSpeed: 10
+  buletLifetime: 5
+  fireRate: 0.2
+  useAi: 0
+  isFiring: 0
+--- !u!114 &1367570575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367570571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a658ade76c0e4494bb8376cfbcb990e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healt: 50
+--- !u!58 &1367570577
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367570571}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15506351, y: -0.65471166}
+  serializedVersion: 2
+  m_Radius: 1.5165263
+--- !u!50 &1367570578
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367570571}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1458845625
 GameObject:
   m_ObjectHideFlags: 0

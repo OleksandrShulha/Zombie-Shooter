@@ -9,7 +9,12 @@ public class Player : MonoBehaviour
     Vector2 minBounds;
     Vector2 maxBounds;
     [SerializeField] float paddingOnScreen;
+    Shooter shooter;
 
+    private void Awake()
+    {
+        shooter = GetComponent<Shooter>();
+    }
 
     void Start()
     {
@@ -19,6 +24,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMove();
+        OnFire();
     }
 
     public float GetPlayrMoveSpeed()
@@ -56,6 +62,20 @@ public class Player : MonoBehaviour
             {
                 transform.position = transform.position + new Vector3(0, -1f * moveSpeed * Time.deltaTime,  0);
             }
+        }
+
+    }
+
+
+    void OnFire()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            shooter.isFiring = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            shooter.isFiring = false;
         }
 
     }
