@@ -11,9 +11,13 @@ public class Health : MonoBehaviour
     CameraShake cameraShake;
     [SerializeField] bool apleyCameraShake;
 
+    ScoreKeeper scoreKeeper;
+    [SerializeField] bool isPlayr;
+
     private void Awake()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
+        scoreKeeper = FindAnyObjectByType<ScoreKeeper>();
     }
 
     public int GetHealt()
@@ -47,6 +51,10 @@ public class Health : MonoBehaviour
 
         if (healt <= 0)
         {
+            if (!isPlayr)
+            {
+                scoreKeeper.SetScore(50);
+            }
             Destroy(gameObject);
         }
     }
