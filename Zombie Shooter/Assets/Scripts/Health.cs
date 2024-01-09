@@ -13,11 +13,13 @@ public class Health : MonoBehaviour
 
     ScoreKeeper scoreKeeper;
     [SerializeField] bool isPlayr;
+    LevelManager levelManager;
 
     private void Awake()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
         scoreKeeper = FindAnyObjectByType<ScoreKeeper>();
+        levelManager = FindAnyObjectByType<LevelManager>();
     }
 
     public int GetHealt()
@@ -56,6 +58,10 @@ public class Health : MonoBehaviour
                 scoreKeeper.SetScore(50);
             }
             Destroy(gameObject);
+            if (isPlayr)
+            {
+                levelManager.LoadGameOver();
+            }
         }
     }
 
