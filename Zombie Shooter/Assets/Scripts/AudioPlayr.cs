@@ -13,7 +13,6 @@ public class AudioPlayr : MonoBehaviour
     private void ManageSinglton()
     {
         int instanseCount = FindObjectsOfType(GetType()).Length;
-        Debug.Log(instanseCount);
         if (instanseCount > 1)
         {
             gameObject.SetActive(false);
